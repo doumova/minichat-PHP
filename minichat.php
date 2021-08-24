@@ -40,14 +40,14 @@ catch (Exception $e)
 
 /**recuperation des message et pseudo */
 
-$reponse = $bdd->query('SELECT pseudo,message FROM chat ORDER BY ID DESC LIMIT 0, 20');
+$reponse = $bdd->query('SELECT pseudo,message, date_creation FROM chat ORDER BY ID DESC LIMIT 0,20');
 
 /**Affichage des messages par protection avec htmlspecialchars */
 
 while($donnees = $reponse->fetch())
 {
     echo '<p><strong>' . htmlspecialchars($donnees['pseudo']) . '</strong> : ' . 
-    htmlspecialchars($donnees['message']) . '</p>';    
+    htmlspecialchars($donnees['message']) . htmlspecialchars($donnees['date_creation']).'</p>';    
 }
 
 
